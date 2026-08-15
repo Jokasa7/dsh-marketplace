@@ -1,0 +1,27 @@
+{
+  "id": "superpowers-dsh",
+  "name": "Superpowers for DSH",
+  "version": "0.1.0",
+  "description": "TDD, debugging, planning, and collaboration skills adapted from obra/superpowers for DeepSeek Harness. Gives your agent battle-tested working practices as loadable skills.",
+  "author": {
+    "name": "community",
+    "url": "https://github.com/LayneChai"
+  },
+  "license": "MIT",
+  "category": "skills",
+  "tags": ["skills", "tdd", "planning", "debugging", "productivity"],
+  "compatibility": {
+    "dsh": ">=0.1.0",
+    "platforms": ["linux", "macos", "windows"]
+  },
+  "install": {
+    "target": "npm",
+    "spec": "superpowers-dsh",
+    "command": "dsh plugin --profile {profile} add superpowers-dsh"
+  },
+  "verified": true,
+  "stars": 42,
+  "maintainers": ["LayneChai"],
+  "repository": "https://github.com/LayneChai/superpowers-dsh",
+  "docs": "https://github.com/LayneChai/superpowers-dsh/blob/main/README.md"
+}

@@ -1,0 +1,161 @@
+{
+  "schema": "https://raw.githubusercontent.com/dsh-marketplace/registry/main/schema/plugin.schema.json",
+  "generatedAt": "2026-08-15T05:48:18.599Z",
+  "count": 4,
+  "plugins": [
+    {
+      "id": "deepseek-harness-for-codex",
+      "name": "DSH for Codex",
+      "version": "0.1.0",
+      "description": "A Codex plugin and MCP server that runs DeepSeek Harness locally, delegates tasks through visible web sessions, and lets Codex independently review the results.",
+      "author": {
+        "name": "community",
+        "url": "https://github.com/Seann0824"
+      },
+      "license": "MIT",
+      "category": "integration",
+      "tags": [
+        "codex",
+        "mcp",
+        "server",
+        "integration",
+        "delegation"
+      ],
+      "compatibility": {
+        "dsh": ">=0.1.0",
+        "platforms": [
+          "linux",
+          "macos"
+        ]
+      },
+      "install": {
+        "target": "git",
+        "spec": "github:Seann0824/deepseek-harness-for-codex",
+        "command": "dsh plugin --profile {profile} add github:Seann0824/deepseek-harness-for-codex"
+      },
+      "verified": false,
+      "stars": 8,
+      "maintainers": [
+        "Seann0824"
+      ],
+      "repository": "https://github.com/Seann0824/deepseek-harness-for-codex",
+      "docs": "https://github.com/Seann0824/deepseek-harness-for-codex/blob/main/README.md"
+    },
+    {
+      "id": "dsh-mcp-client",
+      "name": "MCP Client",
+      "version": "1.0.0",
+      "description": "Connect DeepSeek Harness to Model Context Protocol servers so your agent can call external MCP tools. Ships with the dsh CLI for patch layers that need server access.",
+      "author": {
+        "name": "DeepSeek Harness",
+        "url": "https://github.com/deepseek-harness"
+      },
+      "license": "MIT",
+      "category": "infrastructure",
+      "tags": [
+        "mcp",
+        "integration",
+        "tools",
+        "infrastructure"
+      ],
+      "compatibility": {
+        "dsh": ">=0.1.0",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      },
+      "install": {
+        "target": "npm",
+        "spec": "@deepseek-ai/dsh-mcp-client",
+        "command": "dsh plugin --profile {profile} add @deepseek-ai/dsh-mcp-client"
+      },
+      "verified": true,
+      "stars": 128,
+      "maintainers": [
+        "deepseek-harness"
+      ],
+      "repository": "https://github.com/deepseek-harness/dsh-mcp-client",
+      "docs": "https://github.com/deepseek-harness/deepseek-harness"
+    },
+    {
+      "id": "dsh-plugin-cc",
+      "name": "dsh ↔ Claude Code bridge",
+      "version": "0.1.0",
+      "description": "Bridge DeepSeek Harness into Claude Code for review, critique, delegation, and session import. Lets two powerful agents collaborate on the same workspace.",
+      "author": {
+        "name": "community",
+        "url": "https://github.com/cpj-dev"
+      },
+      "license": "MIT",
+      "category": "integration",
+      "tags": [
+        "claude",
+        "claude-code",
+        "integration",
+        "bridge",
+        "review"
+      ],
+      "compatibility": {
+        "dsh": ">=0.1.0",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      },
+      "install": {
+        "target": "npm",
+        "spec": "dsh-plugin-cc",
+        "command": "dsh plugin --profile {profile} add dsh-plugin-cc"
+      },
+      "verified": true,
+      "stars": 25,
+      "maintainers": [
+        "cpj-dev"
+      ],
+      "repository": "https://github.com/cpj-dev/dsh-plugin-cc",
+      "docs": "https://github.com/cpj-dev/dsh-plugin-cc/blob/main/README.md"
+    },
+    {
+      "id": "superpowers-dsh",
+      "name": "Superpowers for DSH",
+      "version": "0.1.0",
+      "description": "TDD, debugging, planning, and collaboration skills adapted from obra/superpowers for DeepSeek Harness. Gives your agent battle-tested working practices as loadable skills.",
+      "author": {
+        "name": "community",
+        "url": "https://github.com/LayneChai"
+      },
+      "license": "MIT",
+      "category": "skills",
+      "tags": [
+        "skills",
+        "tdd",
+        "planning",
+        "debugging",
+        "productivity"
+      ],
+      "compatibility": {
+        "dsh": ">=0.1.0",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      },
+      "install": {
+        "target": "npm",
+        "spec": "superpowers-dsh",
+        "command": "dsh plugin --profile {profile} add superpowers-dsh"
+      },
+      "verified": true,
+      "stars": 42,
+      "maintainers": [
+        "LayneChai"
+      ],
+      "repository": "https://github.com/LayneChai/superpowers-dsh",
+      "docs": "https://github.com/LayneChai/superpowers-dsh/blob/main/README.md"
+    }
+  ]
+}

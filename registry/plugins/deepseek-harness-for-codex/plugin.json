@@ -1,0 +1,27 @@
+{
+  "id": "deepseek-harness-for-codex",
+  "name": "DSH for Codex",
+  "version": "0.1.0",
+  "description": "A Codex plugin and MCP server that runs DeepSeek Harness locally, delegates tasks through visible web sessions, and lets Codex independently review the results.",
+  "author": {
+    "name": "community",
+    "url": "https://github.com/Seann0824"
+  },
+  "license": "MIT",
+  "category": "integration",
+  "tags": ["codex", "mcp", "server", "integration", "delegation"],
+  "compatibility": {
+    "dsh": ">=0.1.0",
+    "platforms": ["linux", "macos"]
+  },
+  "install": {
+    "target": "git",
+    "spec": "github:Seann0824/deepseek-harness-for-codex",
+    "command": "dsh plugin --profile {profile} add github:Seann0824/deepseek-harness-for-codex"
+  },
+  "verified": false,
+  "stars": 8,
+  "maintainers": ["Seann0824"],
+  "repository": "https://github.com/Seann0824/deepseek-harness-for-codex",
+  "docs": "https://github.com/Seann0824/deepseek-harness-for-codex/blob/main/README.md"
+}

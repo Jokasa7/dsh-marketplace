@@ -1,0 +1,27 @@
+{
+  "id": "dsh-plugin-cc",
+  "name": "dsh ↔ Claude Code bridge",
+  "version": "0.1.0",
+  "description": "Bridge DeepSeek Harness into Claude Code for review, critique, delegation, and session import. Lets two powerful agents collaborate on the same workspace.",
+  "author": {
+    "name": "community",
+    "url": "https://github.com/cpj-dev"
+  },
+  "license": "MIT",
+  "category": "integration",
+  "tags": ["claude", "claude-code", "integration", "bridge", "review"],
+  "compatibility": {
+    "dsh": ">=0.1.0",
+    "platforms": ["linux", "macos", "windows"]
+  },
+  "install": {
+    "target": "npm",
+    "spec": "dsh-plugin-cc",
+    "command": "dsh plugin --profile {profile} add dsh-plugin-cc"
+  },
+  "verified": true,
+  "stars": 25,
+  "maintainers": ["cpj-dev"],
+  "repository": "https://github.com/cpj-dev/dsh-plugin-cc",
+  "docs": "https://github.com/cpj-dev/dsh-plugin-cc/blob/main/README.md"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "dsh-mcp-client",
+  "name": "MCP Client",
+  "version": "1.0.0",
+  "description": "Connect DeepSeek Harness to Model Context Protocol servers so your agent can call external MCP tools. Ships with the dsh CLI for patch layers that need server access.",
+  "author": {
+    "name": "DeepSeek Harness",
+    "url": "https://github.com/deepseek-harness"
+  },
+  "license": "MIT",
+  "category": "infrastructure",
+  "tags": ["mcp", "integration", "tools", "infrastructure"],
+  "compatibility": {
+    "dsh": ">=0.1.0",
+    "platforms": ["linux", "macos", "windows"]
+  },
+  "install": {
+    "target": "npm",
+    "spec": "@deepseek-ai/dsh-mcp-client",
+    "command": "dsh plugin --profile {profile} add @deepseek-ai/dsh-mcp-client"
+  },
+  "verified": true,
+  "stars": 128,
+  "maintainers": ["deepseek-harness"],
+  "repository": "https://github.com/deepseek-harness/dsh-mcp-client",
+  "docs": "https://github.com/deepseek-harness/deepseek-harness"
+}

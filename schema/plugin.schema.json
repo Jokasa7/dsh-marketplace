@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/dsh-marketplace/registry/main/schema/plugin.schema.json",
+  "title": "DSH Plugin Manifest",
+  "description": "The manifest schema for a plugin entry in the dsh-marketplace registry. One JSON file per plugin under registry/plugins/<id>/plugin.json.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "description",
+    "author",
+    "license",
+    "category",
+    "install",
+    "repository"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-_]*$",
+      "description": "Stable, machine-friendly plugin id. Also the directory name under registry/plugins/."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable plugin name shown in the marketplace UI."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+",
+      "description": "Semver version of the plugin as listed in this entry."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One- to two-sentence description of what the plugin does."
+    },
+    "author": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string" }
+      }
+    },
+    "license": { "type": "string" },
+    "category": {
+      "type": "string",
+      "enum": ["skills", "tools", "web", "infrastructure", "integration", "workflow", "experimental", "other"],
+      "description": "Coarse bucket used for marketplace filtering."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form tags used for search."
+    },
+    "compatibility": {
+      "type": "object",
+      "properties": {
+        "dsh": { "type": "string", "description": "Required dsh version range (semver)." },
+        "platforms": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["linux", "macos", "windows"] }
+        }
+      }
+    },
+    "install": {
+      "type": "object",
+      "required": ["target", "spec", "command"],
+      "description": "How a user installs this plugin through the dsh CLI.",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": ["npm", "git", "local"],
+          "description": "The kind of package spec (npm registry package, git host, or a local file: path)."
+        },
+        "spec": {
+          "type": "string",
+          "description": "The package/git spec fed to `dsh plugin add`. For npm: the package name. For git: e.g. github:owner/repo."
+        },
+        "command": {
+          "type": "string",
+          "description": "The exact install command with a {profile} placeholder for the profile name."
+        }
+      }
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "True when a maintainer has reviewed and verified the plugin's safety and install path."
+    },
+    "stars": { "type": "number", "minimum": 0 },
+    "maintainers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "repository": { "type": "string" },
+    "screenshots": { "type": "array", "items": { "type": "string" } },
+    "docs": { "type": "string" },
+    "deprecated": { "type": "boolean", "default": false }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "dsh-marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An open-source, self-hostable marketplace for DeepSeek Harness (DSH) plugins. Browse, search, and install community plugins for dsh.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-registry.mjs && node scripts/build-meta.mjs && vite build web",
+    "serve": "vite web --host 0.0.0.0 --port 5173",
+    "preview": "vite preview web --host 0.0.0.0 --port 4173",
+    "validate": "node scripts/validate-registry.mjs",
+    "verify": "npm run validate && npm run build"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "plugin",
+    "marketplace",
+    "registry"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
