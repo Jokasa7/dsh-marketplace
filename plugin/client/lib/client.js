@@ -4045,9 +4045,9 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		}
 		//#endregion
 		//#region lib/typert.remote-client.js
-		const _dsh_marketplace_dsh_market_marketplace_install_parameter_0$schema = string();
-		const _dsh_marketplace_dsh_market_marketplace_install_parameter_1$schema = string();
-		const _dsh_marketplace_dsh_market_marketplace_install_result$schema = union([object({
+		const _dsh_marketplace_dsh_market_marketplace_installPlugin_parameter_0$schema = string();
+		const _dsh_marketplace_dsh_market_marketplace_installPlugin_parameter_1$schema = string();
+		const _dsh_marketplace_dsh_market_marketplace_installPlugin_result$schema = union([object({
 			"ok": literal(true).readonly(),
 			"value": object({
 				"exitCode": number().readonly(),
@@ -4084,10 +4084,10 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		const TYPERT_REMOTE = {
 			package: "@dsh-marketplace/dsh-market",
 			descriptors: [{
-				id: "@dsh-marketplace/dsh-market#marketplace/install",
+				id: "@dsh-marketplace/dsh-market#marketplace/installPlugin",
 				service: "marketplace",
 				namespace: "marketplace",
-				method: "install",
+				method: "installPlugin",
 				invocation: { kind: "direct" },
 				parameters: [{
 					name: "profile",
@@ -4095,8 +4095,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					source: "json",
 					codec: {
 						mode: "strict",
-						typeSymbol: "@dsh-marketplace/dsh-market#marketplace/install:profile",
-						schema: _dsh_marketplace_dsh_market_marketplace_install_parameter_0$schema
+						typeSymbol: "@dsh-marketplace/dsh-market#marketplace/installPlugin:profile",
+						schema: _dsh_marketplace_dsh_market_marketplace_installPlugin_parameter_0$schema
 					}
 				}, {
 					name: "spec",
@@ -4104,14 +4104,14 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					source: "json",
 					codec: {
 						mode: "strict",
-						typeSymbol: "@dsh-marketplace/dsh-market#marketplace/install:spec",
-						schema: _dsh_marketplace_dsh_market_marketplace_install_parameter_1$schema
+						typeSymbol: "@dsh-marketplace/dsh-market#marketplace/installPlugin:spec",
+						schema: _dsh_marketplace_dsh_market_marketplace_installPlugin_parameter_1$schema
 					}
 				}],
 				result: {
 					mode: "strict",
 					typeSymbol: "@dsh-marketplace/dsh-market/types#MarketplaceInstallResult",
-					schema: _dsh_marketplace_dsh_market_marketplace_install_result$schema
+					schema: _dsh_marketplace_dsh_market_marketplace_installPlugin_result$schema
 				},
 				sourceLocation: {
 					"file": "packages/extensions/dsh-marketplace/src/index.ts",
@@ -4149,34 +4149,34 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			document.head.appendChild(tag);
 		}
 		var MarketplaceTab_module_css_default = {
-			"confirmCmd": "FhmW0W_confirmCmd",
-			"search": "FhmW0W_search",
-			"empty": "FhmW0W_empty",
-			"tagActive": "FhmW0W_tagActive",
-			"stars": "FhmW0W_stars",
-			"cardFoot": "FhmW0W_cardFoot",
-			"miniTag": "FhmW0W_miniTag",
-			"installBtn": "FhmW0W_installBtn",
-			"confirmText": "FhmW0W_confirmText",
-			"cardTop": "FhmW0W_cardTop",
-			"cardMeta": "FhmW0W_cardMeta",
-			"tagCount": "FhmW0W_tagCount",
 			"card": "FhmW0W_card",
-			"cardTags": "FhmW0W_cardTags",
-			"desc": "FhmW0W_desc",
+			"stars": "FhmW0W_stars",
 			"tagCloud": "FhmW0W_tagCloud",
-			"confirmActions": "FhmW0W_confirmActions",
-			"cancelBtn": "FhmW0W_cancelBtn",
-			"verified": "FhmW0W_verified",
-			"command": "FhmW0W_command",
+			"cardTags": "FhmW0W_cardTags",
+			"cardMeta": "FhmW0W_cardMeta",
 			"confirmBackdrop": "FhmW0W_confirmBackdrop",
-			"confirmBtn": "FhmW0W_confirmBtn",
-			"result": "FhmW0W_result",
-			"section": "FhmW0W_section",
+			"confirmCmd": "FhmW0W_confirmCmd",
 			"cardTitle": "FhmW0W_cardTitle",
 			"tagChip": "FhmW0W_tagChip",
-			"confirmBox": "FhmW0W_confirmBox",
-			"count": "FhmW0W_count"
+			"desc": "FhmW0W_desc",
+			"section": "FhmW0W_section",
+			"confirmActions": "FhmW0W_confirmActions",
+			"result": "FhmW0W_result",
+			"count": "FhmW0W_count",
+			"tagActive": "FhmW0W_tagActive",
+			"cardTop": "FhmW0W_cardTop",
+			"tagCount": "FhmW0W_tagCount",
+			"command": "FhmW0W_command",
+			"installBtn": "FhmW0W_installBtn",
+			"confirmText": "FhmW0W_confirmText",
+			"verified": "FhmW0W_verified",
+			"cancelBtn": "FhmW0W_cancelBtn",
+			"confirmBtn": "FhmW0W_confirmBtn",
+			"search": "FhmW0W_search",
+			"miniTag": "FhmW0W_miniTag",
+			"cardFoot": "FhmW0W_cardFoot",
+			"empty": "FhmW0W_empty",
+			"confirmBox": "FhmW0W_confirmBox"
 		};
 		//#endregion
 		//#region lib/types/client/MarketplaceTab.js
@@ -4482,8 +4482,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				},
 				install: async (profile, spec) => {
 					await ensureRemote();
-					const result = await ctx.remote.marketplace.install(profile, spec);
-					if (!result.ok) throw new Error(`marketplace.install failed: ${result.error.message}`);
+					const result = await ctx.remote.marketplace.installPlugin(profile, spec);
+					if (!result.ok) throw new Error(`marketplace.installPlugin failed: ${result.error.message}`);
 					return result.value;
 				}
 			});

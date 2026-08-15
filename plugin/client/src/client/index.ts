@@ -62,8 +62,8 @@ export function apply(ctx: ClientContext): void {
     },
     install: async (profile, spec) => {
       await ensureRemote()
-      const result = await ctx.remote.marketplace.install(profile, spec)
-      if (!result.ok) throw new Error(`marketplace.install failed: ${result.error.message}`)
+      const result = await ctx.remote.marketplace.installPlugin(profile, spec)
+      if (!result.ok) throw new Error(`marketplace.installPlugin failed: ${result.error.message}`)
       return result.value
     },
   })

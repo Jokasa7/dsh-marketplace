@@ -7,11 +7,11 @@ import type { MarketplaceInstallResult, MarketplaceListResult } from '@dsh-marke
 
 declare module '@deepseek-ai/dsh-typert-protocol' {
   interface TypertRemoteNamespace$6d61726b6574706c616365 {
-    install: (profile: string, spec: string) => Promise<RemoteResult<MarketplaceInstallResult>>
+    installPlugin: (profile: string, spec: string) => Promise<RemoteResult<MarketplaceInstallResult>>
     list: () => Promise<RemoteResult<MarketplaceListResult>>
   }
   interface TypertRemoteMap {
-    'marketplace/install': (profile: string, spec: string) => Promise<RemoteResult<MarketplaceInstallResult>>
+    'marketplace/installPlugin': (profile: string, spec: string) => Promise<RemoteResult<MarketplaceInstallResult>>
     'marketplace/list': () => Promise<RemoteResult<MarketplaceListResult>>
   }
   interface TypertRemoteNamespaceMap {

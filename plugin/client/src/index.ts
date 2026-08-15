@@ -87,8 +87,8 @@ export class MarketplaceService extends TypertRemoteService {
    * @param spec - npm package name or `github:owner/repo[#sha]`.
    * @returns exit facts plus collected output, or an explicit rejection.
    */
-  @Remote('install')
-  async install(profile: string, spec: string): Promise<MarketplaceInstallResult> {
+  @Remote('installPlugin')
+  async installPlugin(profile: string, spec: string): Promise<MarketplaceInstallResult> {
     const specError = validateSpec(spec)
     if (specError !== undefined) {
       return { ok: false, code: 'bad-spec', message: specError }
