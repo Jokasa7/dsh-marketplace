@@ -1,0 +1,8 @@
+# DSH Marketplace plugin layer (the bundle this package ships).
+# Inserting this row is what mounts both halves: the host Loader mounts the
+# node half (the Typert Remote), and the web client-modules scanner discovers
+# the browser half through the same row's `dsh.client` declaration.
+
+- insert:
+    - id: dsh-market
+      name: '@dsh-marketplace/dsh-market'

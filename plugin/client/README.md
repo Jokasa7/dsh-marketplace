@@ -1,78 +1,89 @@
-# DSH Marketplace — Web UI client plugin
+# DSH Marketplace — in-harness plugin (dual-face)
 
 This package embeds the **DSH Marketplace** as a native tab inside the DeepSeek
-Harness **Plugins settings section** of the web GUI. It is a real DSH
-**client (browser) plugin** (`dsh.client`), so it renders right inside the
-running harness rather than as a separate website.
+Harness **Plugins settings section** of the web GUI. It is a **dual-face** DSH
+plugin: a host **Typert Remote** plus a browser client bundle.
 
 ## What it adds
 
-In the web GUI, open **Settings → Plugins**. A new **Marketplace** tab renders
-alongside the configuration tabs, with:
+In the web GUI, open **Settings → Plugins → Marketplace** (插件市场). The tab:
 
-- The embedded DSH community plugin catalog (searchable by name, description,
-  tag, or category).
-- Each plugin card shows its verified badge, category, description, and a
-  **copyable install command** (`dsh plugin --profile web add <spec>`).
+- Lists the **full GitHub `dsh-plugin` catalog** (1,662 plugins at last sync),
+  loaded through the host `list` Remote.
+- **Tag filtering** — aggregate all plugin `topics` into clickable tag chips.
+- Search by name, description, tag, language.
+- **One-click install** — the Install button calls the host `install` Remote,
+  which runs `pnpm add <spec>` in the target profile, **after an explicit
+  confirmation dialog** and with a post-install restart reminder.
+- Chinese-first descriptions (`descriptionZh`) for curated entries; GitHub's
+  own bilingual descriptions otherwise.
 
-> Security note: install commands are shown for the user to run themselves —
-> the plugin never executes `dsh plugin add`. Installing a plugin runs its
-> code on your machine (git-hosted plugins may run a `prepare` build), so you
-> should review before installing.
+> Security note: installing a plugin executes its code on your machine
+> (git-hosted plugins may run a `prepare` build). The UI always asks for
+> confirmation first, and the host validates the install spec.
 
 ## How it works
 
-- `package.json` declares `dsh.client` (`platform: 'web'`), so the host's
-  client-module scanner discovers it and serves the built bundle at
-  `/plugins/@dsh-marketplace/dsh-market/client.js`.
-- `src/client/index.ts` registers one entry into the shared
-  `settings.plugins.tab` slot (owned by `@deepseek-ai/dsh-client-ui-settings`),
-  rendering the tab.
-- `src/client/catalog.ts` embeds a snapshot of the marketplace registry, so the
-  tab works fully offline with zero server calls.
-- `src/index.ts` is the empty node half that places the package in the
-  composition and Loader.
+- **Host half** (`src/index.ts`) — `MarketplaceService extends TypertRemoteService`
+  exposing two `@Remote` methods:
+  - `list()` → the embedded catalog (read from `lib/plugins.json`).
+  - `install(profile, spec)` → `ctx.subprocess.spawn(pnpm add <spec>)` in the
+    resolved profile directory, returning exit facts + collected output.
+- **Browser half** (`src/client/index.ts`) — mounts the generated Remote
+  contribution (`ctx.remote.$mount`) and registers a `settings.plugins.tab`
+  entry rendering `MarketplaceTab`.
+- **`cordis.patch.yml`** — the bundle patch inserting the plugin row (one row
+  mounts both halves); declared via `dsh.bundle.patch` in package.json.
 
 ## Build
 
-The browser bundle must be built with the DSH workspace toolchain (`tsdown`),
-because it depends on the `@deepseek-ai/dsh-client-*` workspace packages and the
-`clientBundle` preset (`tsdown.client.ts`). This package will **not** build
-standalone outside a DSH checkout.
+Building requires the DSH workspace toolchain (Typert generator + tsdown +
+`@deepseek-ai` workspace deps). It will **not** build standalone.
 
-Within a DSH checkout (as this fixture: `packages/extensions/dsh-marketplace`):
+Within a DSH checkout (placed at `packages/extensions/dsh-marketplace`):
 
 ```bash
-pnpm install          # links workspace deps
-cd packages/extensions/dsh-marketplace
-pnpm run bundle       # emits lib/index.js + lib/client.js
+pnpm install
+pnpm exec tsc -b tsconfig.host.json          # host types
+pnpm exec tsdown --env.DSH_BUILD_FACE host   # typert generate lib/typert.*
+pnpm exec tsc -b tsconfig.client.json        # client types
+pnpm exec tsdown --env.DSH_BUILD_FACE client # browser bundle lib/client.js
 ```
 
-The built `lib/client.js` (and `lib/client.js.map`) are committed here so the
-package can be installed without a rebuild.
+The built artifacts (`lib/index.js`, `lib/client.js`, `lib/typert.*`,
+`lib/plugins.json`) are committed so the package installs without a rebuild.
 
 ## Install into a harness
 
-To use it, install the package into the target profile and mount it:
+Because the package declares `dsh.bundle.patch`, a normal `dsh plugin add`
+installs it **and** reconciles it into the profile's bundle list:
 
 ```bash
-# 1. add the package to the profile (pnpm)
-pnpm add file:<this directory> --dir "$DSH_HOME/profiles/web"
-
-# 2. mount it as a plugin row in the profile's cordis.patch.yml
+dsh plugin --profile web add file:<this directory>
 ```
 
-```yaml
-# "$DSH_HOME/profiles/web/cordis.patch.yml"
-- insert:
-    - id: dsh-market
-      name: '@dsh-marketplace/dsh-market'
+If adding manually, ensure the profile lists the bundle and that no duplicate
+`dsh-market` row is inserted (the package's own patch supplies it):
+
+```jsonc
+// "$DSH_HOME/profiles/web/package.json"
+{ "dsh": { "profile": { "bundles": ["@deepseek-ai/dsh-base", "@deepseek-ai/dsh-web-app", "@dsh-marketplace/dsh-market"] } } }
 ```
 
-Then restart the web profile (client package metadata is cached until restart):
+Then restart the web profile (client plugin metadata is cached until restart):
 
 ```bash
 pnpm dsh web
 ```
 
 Open **Settings → Plugins → Marketplace**.
+
+## Refresh the catalog
+
+The embedded `lib/plugins.json` is generated from the marketplace repo:
+
+```bash
+# in the dsh-marketplace repo root
+node scripts/sync-github.mjs          # refresh web/public/github-plugins.json
+node scripts/build-plugin-catalog.mjs # emit plugin/client/lib/plugins.json
+```

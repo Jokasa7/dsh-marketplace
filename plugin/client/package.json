@@ -1,6 +1,6 @@
 {
   "name": "@dsh-marketplace/dsh-market",
-  "description": "DSH Marketplace settings tab: browse, search, and inspect DSH community plugins inside the Plugins settings section of the web GUI.",
+  "description": "DSH Marketplace plugin: a Settings > Plugins tab with the full GitHub dsh-plugin catalog, tag filtering, and one-click install via a host Typert Remote.",
   "version": "0.1.0",
   "publishConfig": {
     "access": "public"
@@ -17,6 +17,18 @@
       "types": "./lib/types/index.d.ts",
       "default": "./lib/index.js"
     },
+    "./types": {
+      "types": "./lib/types/types.d.ts",
+      "default": "./lib/types/types.js"
+    },
+    "./typert": {
+      "types": "./lib/typert.host.d.ts",
+      "default": "./lib/typert.host.js"
+    },
+    "./remote": {
+      "types": "./lib/typert.remote-client.d.ts",
+      "default": "./lib/typert.remote-client.js"
+    },
     "./client": {
       "types": "./lib/types/client/index.d.ts",
       "default": "./lib/client.js"
@@ -25,12 +37,16 @@
     "./package.json": "./package.json"
   },
   "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "inject": [
         "@deepseek-ai/dsh-client-runtime",
         "@deepseek-ai/dsh-client-ui-settings",
         "@deepseek-ai/dsh-client-ui-slots",
-        "@deepseek-ai/dsh-client-locale"
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-api-remotes"
       ],
       "platform": "web"
     }
@@ -40,25 +56,42 @@
     "watch": "tsdown --watch"
   },
   "license": "MIT",
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
   "peerDependencies": {
-    "@deepseek-ai/dsh-client-locale": "workspace:^",
-    "@deepseek-ai/dsh-client-runtime": "workspace:^",
-    "@deepseek-ai/dsh-client-ui-settings": "workspace:^",
-    "@deepseek-ai/dsh-client-ui-slots": "workspace:^",
-    "@deepseek-ai/cordis": "workspace:^",
+    "@deepseek-ai/dsh-api-remotes": ">=0.1.0-rc.0",
+    "@deepseek-ai/dsh-app-boot": ">=0.1.0-rc.0",
+    "@deepseek-ai/dsh-client-locale": ">=0.1.0-rc.0",
+    "@deepseek-ai/dsh-client-runtime": ">=0.1.0-rc.0",
+    "@deepseek-ai/dsh-client-ui-settings": ">=0.1.0-rc.0",
+    "@deepseek-ai/dsh-client-ui-slots": ">=0.1.0-rc.0",
+    "@deepseek-ai/dsh-subprocess": ">=0.1.0-rc.0",
+    "@deepseek-ai/dsh-typert-protocol": ">=0.1.0-rc.0",
+    "@deepseek-ai/cordis": ">=0.1.0-rc.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@deepseek-ai/dsh-api-remotes": "workspace:^",
     "@deepseek-ai/dsh-client-locale": "workspace:^",
     "@deepseek-ai/dsh-client-runtime": "workspace:^",
     "@deepseek-ai/dsh-client-ui-settings": "workspace:^",
     "@deepseek-ai/dsh-client-ui-slots": "workspace:^",
+    "@deepseek-ai/dsh-typert-protocol": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^",
+    "@types/react": "~18.3.1",
     "react": "^18.2.0"
   },
   "files": [
     "lib/index.js",
+    "lib/types/**/*.js",
+    "lib/types/**/*.d.ts",
+    "lib/typert.host.js",
+    "lib/typert.host.d.ts",
+    "lib/typert.remote-client.js",
+    "lib/typert.remote-client.d.ts",
     "lib/client.js",
-    "lib/types/**/*.d.ts"
+    "lib/plugins.json",
+    "cordis.patch.yml"
   ]
 }

@@ -16,6 +16,32 @@
   font-size: 14px;
 }
 
+.tagCloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tagChip {
+  font-size: 12px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  color: inherit;
+  transition: 0.12s;
+}
+.tagChip:hover { border-color: currentColor; }
+.tagActive {
+  background: color-mix(in srgb, #00c9a7 20%, transparent);
+  border-color: #00c9a7;
+  color: #00c9a7;
+}
+.tagCount { opacity: 0.6; font-size: 10.5px; margin-left: 2px; }
+
+.count { color: color-mix(in srgb, currentColor 60%, transparent); font-size: 12.5px; }
+
 .card {
   border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
   border-radius: 10px;
@@ -25,25 +51,9 @@
   gap: 6px;
 }
 
-.top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.name {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.badges {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  flex: 0 0 auto;
-}
+.cardTop { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.cardTitle { margin: 0; font-size: 15px; font-weight: 600; }
+.cardMeta { display: flex; gap: 8px; align-items: center; flex: 0 0 auto; }
 
 .verified {
   font-size: 11px;
@@ -53,20 +63,23 @@
   color: #31c48d;
   border: 1px solid color-mix(in srgb, #31c48d 50%, transparent);
 }
+.stars { color: #f59e0b; font-size: 12px; }
 
-.category {
+.desc { margin: 0; color: color-mix(in srgb, currentColor 72%, transparent); }
+
+.cardTags { display: flex; flex-wrap: wrap; gap: 5px; }
+.miniTag {
   font-size: 11px;
   padding: 1px 7px;
-  border-radius: 999px;
-  background: color-mix(in srgb, currentColor 12%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  color: color-mix(in srgb, currentColor 70%, transparent);
 }
 
-.desc {
-  margin: 0;
-  color: color-mix(in srgb, currentColor 72%, transparent);
-}
+.cardFoot { display: flex; gap: 8px; align-items: stretch; }
 
 .command {
+  flex: 1;
   font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
   font-size: 12px;
   background: color-mix(in srgb, currentColor 8%, transparent);
@@ -78,9 +91,86 @@
   user-select: all;
 }
 
+.installBtn {
+  background: color-mix(in srgb, #4f6bff 85%, transparent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 14px;
+  cursor: pointer;
+  font-weight: 600;
+  flex: 0 0 auto;
+}
+.installBtn:hover { background: #4f6bff; }
+.installBtn:disabled { opacity: 0.6; cursor: default; }
+
 .empty {
   color: color-mix(in srgb, currentColor 60%, transparent);
   padding: 16px 0;
   text-align: center;
+  margin: 0;
+}
+
+.confirmBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 20, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 50;
+}
+.confirmBox {
+  background: #151a2e;
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 14px;
+  padding: 20px;
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.confirmBox h4 { margin: 0; font-size: 17px; }
+.confirmText { margin: 0; color: color-mix(in srgb, currentColor 75%, transparent); font-size: 13px; }
+.confirmCmd {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  background: #0a0f20;
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 6px;
+  padding: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.confirmActions { display: flex; gap: 8px; justify-content: flex-end; }
+.cancelBtn {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  color: inherit;
+  border-radius: 8px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+.confirmBtn {
+  background: #f59e0b;
+  color: #1a1200;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.result {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 8px;
+  padding: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
   margin: 0;
 }
