@@ -1,0 +1,28 @@
+{
+  "id": "vibe-skills",
+  "name": "VibeSkills",
+  "version": "0.1.0",
+  "description": "通用技能路由器：自动发现本地 Skills 并智能编排 harness 工作流。A general-purpose Skill that automatically routes local Skills and orchestrates harness workflows.",
+  "descriptionZh": "一个通用技能管理器：自动发现本机的 Skill 并根据当前任务智能编排，让 Agent 更灵活地组合与调用技能。",
+  "author": {
+    "name": "community",
+    "url": "https://github.com/foryourhealth111-pixel"
+  },
+  "license": "MIT",
+  "category": "skills",
+  "tags": ["skills", "router", "workflow", "orchestration"],
+  "compatibility": {
+    "dsh": ">=0.1.0",
+    "platforms": ["linux", "macos", "windows"]
+  },
+  "install": {
+    "target": "git",
+    "spec": "github:foryourhealth111-pixel/Vibe-Skills",
+    "command": "dsh plugin --profile {profile} add github:foryourhealth111-pixel/Vibe-Skills"
+  },
+  "verified": false,
+  "stars": 2782,
+  "maintainers": ["foryourhealth111-pixel"],
+  "repository": "https://github.com/foryourhealth111-pixel/Vibe-Skills",
+  "docs": "https://github.com/foryourhealth111-pixel/Vibe-Skills"
+}

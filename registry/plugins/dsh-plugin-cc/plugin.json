@@ -3,6 +3,7 @@
   "name": "dsh ↔ Claude Code bridge",
   "version": "0.1.0",
   "description": "Bridge DeepSeek Harness into Claude Code for review, critique, delegation, and session import. Lets two powerful agents collaborate on the same workspace.",
+  "descriptionZh": "把 DeepSeek Harness 桥接到 Claude Code，用于审查、评审、任务委托与会话导入，让两个强大的 Agent 在同一工作区协作。",
   "author": {
     "name": "community",
     "url": "https://github.com/cpj-dev"

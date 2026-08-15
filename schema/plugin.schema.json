@@ -37,6 +37,10 @@
       "minLength": 1,
       "description": "One- to two-sentence description of what the plugin does."
     },
+    "descriptionZh": {
+      "type": "string",
+      "description": "Optional Chinese description shown first in the marketplace UI."
+    },
     "author": {
       "type": "object",
       "required": ["name"],

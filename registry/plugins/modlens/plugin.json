@@ -1,0 +1,28 @@
+{
+  "id": "modlens",
+  "name": "ModLens 视觉插件",
+  "version": "0.3.0",
+  "description": "第一个 DeepSeek Harness 视觉插件，也是所有纯文本编码 Agent 的视觉桥。粘贴图片即可得到结构化 JSON 证据（OCR、版面、语义）。The first vision plugin for DSH.",
+  "descriptionZh": "为 DeepSeek、GLM 等纯文本模型外挂视觉能力：粘贴图片即可获得结构化 JSON 证据，包含 OCR 文字转录、版面布局与语义信息。",
+  "author": {
+    "name": "community",
+    "url": "https://github.com/liustack"
+  },
+  "license": "MIT",
+  "category": "tools",
+  "tags": ["vision", "ocr", "image", "multimodal", "json"],
+  "compatibility": {
+    "dsh": ">=0.1.0",
+    "platforms": ["linux", "macos", "windows"]
+  },
+  "install": {
+    "target": "npm",
+    "spec": "@liustack/modlens",
+    "command": "dsh plugin --profile {profile} add @liustack/modlens"
+  },
+  "verified": false,
+  "stars": 1447,
+  "maintainers": ["liustack"],
+  "repository": "https://github.com/liustack/modlens",
+  "docs": "https://github.com/liustack/modlens"
+}

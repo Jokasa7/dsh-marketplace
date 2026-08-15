@@ -3,6 +3,7 @@
   "name": "DSH for Codex",
   "version": "0.1.0",
   "description": "A Codex plugin and MCP server that runs DeepSeek Harness locally, delegates tasks through visible web sessions, and lets Codex independently review the results.",
+  "descriptionZh": "一个 Codex 插件兼 MCP 服务器：在本地运行 DeepSeek Harness，通过可见的 Web 会话委派任务，并让 Codex 独立审查结果。",
   "author": {
     "name": "community",
     "url": "https://github.com/Seann0824"

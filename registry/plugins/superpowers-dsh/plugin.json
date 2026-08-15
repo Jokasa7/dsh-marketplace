@@ -3,6 +3,7 @@
   "name": "Superpowers for DSH",
   "version": "0.1.0",
   "description": "TDD, debugging, planning, and collaboration skills adapted from obra/superpowers for DeepSeek Harness. Gives your agent battle-tested working practices as loadable skills.",
+  "descriptionZh": "从 obra/superpowers 改编的 DeepSeek Harness 技能包：为 Agent 提供测试驱动开发(TDD)、调试、规划与协作等久经实战的工作方法，可作为技能加载。",
   "author": {
     "name": "community",
     "url": "https://github.com/LayneChai"

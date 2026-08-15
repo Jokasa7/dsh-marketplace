@@ -3,6 +3,7 @@
   "name": "MCP Client",
   "version": "1.0.0",
   "description": "Connect DeepSeek Harness to Model Context Protocol servers so your agent can call external MCP tools. Ships with the dsh CLI for patch layers that need server access.",
+  "descriptionZh": "将 DeepSeek Harness 连接到模型上下文协议(MCP)服务器，让 Agent 调用外部 MCP 工具；随 dsh CLI 提供，供需要服务器访问的补丁层使用。",
   "author": {
     "name": "DeepSeek Harness",
     "url": "https://github.com/deepseek-harness"

@@ -1,13 +1,14 @@
 {
   "schema": "https://raw.githubusercontent.com/dsh-marketplace/registry/main/schema/plugin.schema.json",
-  "generatedAt": "2026-08-15T06:08:34.239Z",
-  "count": 4,
+  "generatedAt": "2026-08-15T06:44:44.646Z",
+  "count": 7,
   "plugins": [
     {
       "id": "deepseek-harness-for-codex",
       "name": "DSH for Codex",
       "version": "0.1.0",
       "description": "A Codex plugin and MCP server that runs DeepSeek Harness locally, delegates tasks through visible web sessions, and lets Codex independently review the results.",
+      "descriptionZh": "一个 Codex 插件兼 MCP 服务器：在本地运行 DeepSeek Harness，通过可见的 Web 会话委派任务，并让 Codex 独立审查结果。",
       "author": {
         "name": "community",
         "url": "https://github.com/Seann0824"
@@ -46,6 +47,7 @@
       "name": "MCP Client",
       "version": "1.0.0",
       "description": "Connect DeepSeek Harness to Model Context Protocol servers so your agent can call external MCP tools. Ships with the dsh CLI for patch layers that need server access.",
+      "descriptionZh": "将 DeepSeek Harness 连接到模型上下文协议(MCP)服务器，让 Agent 调用外部 MCP 工具；随 dsh CLI 提供，供需要服务器访问的补丁层使用。",
       "author": {
         "name": "DeepSeek Harness",
         "url": "https://github.com/deepseek-harness"
@@ -84,6 +86,7 @@
       "name": "dsh ↔ Claude Code bridge",
       "version": "0.1.0",
       "description": "Bridge DeepSeek Harness into Claude Code for review, critique, delegation, and session import. Lets two powerful agents collaborate on the same workspace.",
+      "descriptionZh": "把 DeepSeek Harness 桥接到 Claude Code，用于审查、评审、任务委托与会话导入，让两个强大的 Agent 在同一工作区协作。",
       "author": {
         "name": "community",
         "url": "https://github.com/cpj-dev"
@@ -119,10 +122,92 @@
       "docs": "https://github.com/cpj-dev/dsh-plugin-cc/blob/main/README.md"
     },
     {
+      "id": "dsh-web-ui",
+      "name": "dsh-web-ui",
+      "version": "0.1.0",
+      "description": "Web UI 皮肤与面板合集：任务看板、Git 图谱、右侧面板、远程移动端 UI、宠物、实时 token 统计与皮肤中心。Plugin and skin collection for the DSH Web UI.",
+      "descriptionZh": "为 DSH Web 界面提供任务看板、Git 图谱、右侧信息面板、远程移动端 UI、宠物、实时 token 统计以及皮肤中心等增强面板。",
+      "author": {
+        "name": "community",
+        "url": "https://github.com/zhu1090093659"
+      },
+      "license": "MIT",
+      "category": "web",
+      "tags": [
+        "web",
+        "ui",
+        "skin",
+        "panel",
+        "git",
+        "token"
+      ],
+      "compatibility": {
+        "dsh": ">=0.1.0",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      },
+      "install": {
+        "target": "npm",
+        "spec": "@zhu1090093659/dsh-web-ui",
+        "command": "dsh plugin --profile {profile} add @zhu1090093659/dsh-web-ui"
+      },
+      "verified": false,
+      "stars": 2151,
+      "maintainers": [
+        "zhu1090093659"
+      ],
+      "repository": "https://github.com/zhu1090093659/dsh-web-ui",
+      "docs": "https://github.com/zhu1090093659/dsh-web-ui/blob/main/README.md"
+    },
+    {
+      "id": "modlens",
+      "name": "ModLens 视觉插件",
+      "version": "0.3.0",
+      "description": "第一个 DeepSeek Harness 视觉插件，也是所有纯文本编码 Agent 的视觉桥。粘贴图片即可得到结构化 JSON 证据（OCR、版面、语义）。The first vision plugin for DSH.",
+      "descriptionZh": "为 DeepSeek、GLM 等纯文本模型外挂视觉能力：粘贴图片即可获得结构化 JSON 证据，包含 OCR 文字转录、版面布局与语义信息。",
+      "author": {
+        "name": "community",
+        "url": "https://github.com/liustack"
+      },
+      "license": "MIT",
+      "category": "tools",
+      "tags": [
+        "vision",
+        "ocr",
+        "image",
+        "multimodal",
+        "json"
+      ],
+      "compatibility": {
+        "dsh": ">=0.1.0",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      },
+      "install": {
+        "target": "npm",
+        "spec": "@liustack/modlens",
+        "command": "dsh plugin --profile {profile} add @liustack/modlens"
+      },
+      "verified": false,
+      "stars": 1447,
+      "maintainers": [
+        "liustack"
+      ],
+      "repository": "https://github.com/liustack/modlens",
+      "docs": "https://github.com/liustack/modlens"
+    },
+    {
       "id": "superpowers-dsh",
       "name": "Superpowers for DSH",
       "version": "0.1.0",
       "description": "TDD, debugging, planning, and collaboration skills adapted from obra/superpowers for DeepSeek Harness. Gives your agent battle-tested working practices as loadable skills.",
+      "descriptionZh": "从 obra/superpowers 改编的 DeepSeek Harness 技能包：为 Agent 提供测试驱动开发(TDD)、调试、规划与协作等久经实战的工作方法，可作为技能加载。",
       "author": {
         "name": "community",
         "url": "https://github.com/LayneChai"
@@ -156,6 +241,45 @@
       ],
       "repository": "https://github.com/LayneChai/superpowers-dsh",
       "docs": "https://github.com/LayneChai/superpowers-dsh/blob/main/README.md"
+    },
+    {
+      "id": "vibe-skills",
+      "name": "VibeSkills",
+      "version": "0.1.0",
+      "description": "通用技能路由器：自动发现本地 Skills 并智能编排 harness 工作流。A general-purpose Skill that automatically routes local Skills and orchestrates harness workflows.",
+      "descriptionZh": "一个通用技能管理器：自动发现本机的 Skill 并根据当前任务智能编排，让 Agent 更灵活地组合与调用技能。",
+      "author": {
+        "name": "community",
+        "url": "https://github.com/foryourhealth111-pixel"
+      },
+      "license": "MIT",
+      "category": "skills",
+      "tags": [
+        "skills",
+        "router",
+        "workflow",
+        "orchestration"
+      ],
+      "compatibility": {
+        "dsh": ">=0.1.0",
+        "platforms": [
+          "linux",
+          "macos",
+          "windows"
+        ]
+      },
+      "install": {
+        "target": "git",
+        "spec": "github:foryourhealth111-pixel/Vibe-Skills",
+        "command": "dsh plugin --profile {profile} add github:foryourhealth111-pixel/Vibe-Skills"
+      },
+      "verified": false,
+      "stars": 2782,
+      "maintainers": [
+        "foryourhealth111-pixel"
+      ],
+      "repository": "https://github.com/foryourhealth111-pixel/Vibe-Skills",
+      "docs": "https://github.com/foryourhealth111-pixel/Vibe-Skills"
     }
   ]
 }

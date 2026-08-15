@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build-registry.mjs && node scripts/build-meta.mjs && vite build web",
+    "sync:github": "node scripts/sync-github.mjs",
     "serve": "vite web --host 0.0.0.0 --port 5173",
     "preview": "vite preview web --host 0.0.0.0 --port 4173",
     "validate": "node scripts/validate-registry.mjs",
