@@ -25,6 +25,9 @@ Browse, search, and install community plugins with one copy-paste `dsh` command.
 - **Self-hostable** — pure static site. `npm run build`, then host `web/dist` anywhere
   (GitHub Pages, Netlify, Nginx, etc.).
 - **Fast** — the UI loads a single gzipped `index.json`.
+- **In-harness plugin** — the repository also ships a real DSH **client plugin**
+  (`plugin/client/`) that renders a **Marketplace tab inside Settings → Plugins**
+  of the DSH web GUI, so you can browse the catalog from within the harness itself.
 
 ## 🧩 How DSH plugins work (the model we build on)
 
@@ -62,6 +65,8 @@ dsh-marketplace/
 │   ├── src/                      # React app (search, categories, detail view)
 │   ├── public/                   # generated index.json, favicon
 │   └── vite.config.js
+├── plugin/
+│   └── client/                   # DSH client plugin — Marketplace tab in the web GUI settings
 └── .github/workflows/            # CI: validate, build, deploy to GitHub Pages
 ```
 
@@ -97,6 +102,30 @@ npm run build
 
 The homepage and plugin entries live in `registry/`. The `index.json` (and `.gz` companion)
 are regenerated on `npm run build` and can be committed so the site works immediately after clone.
+
+## 🧩 In-harness Marketplace tab (client plugin)
+
+The repository ships a **real DSH client plugin** under [`plugin/client/`](plugin/client/)
+that renders a **Marketplace tab inside Settings → Plugins** of the running web
+GUI. It mounts into the shared `settings.plugins.tab` slot and shows the embedded
+catalog with search and per-plugin install commands — fully offline.
+
+To install it into a profile (e.g. `web`):
+
+```bash
+pnpm add file:./plugin/client            # from the repo root
+# then add a plugin row to "$DSH_HOME/profiles/web/cordis.patch.yml":
+#   - insert:
+#       - id: dsh-market
+#         name: '@dsh-marketplace/dsh-market'
+# and restart the web profile (pnpm dsh web)
+```
+
+Client plugin metadata is cached until restart, so a profile restart is required
+after adding it. Building the bundle from source requires the DSH workspace
+toolchain (`tsdown` + the `@deepseek-ai` workspace packages); the built
+`lib/client.js` is committed so install works without a rebuild. See
+[`plugin/client/README.md`](plugin/client/README.md).
 
 ## 🧱 Verifying install commands
 
