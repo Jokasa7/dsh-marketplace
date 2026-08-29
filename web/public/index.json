@@ -1,7 +1,7 @@
 {
   "schema": "https://raw.githubusercontent.com/dsh-marketplace/registry/main/schema/plugin.schema.json",
-  "generatedAt": "2026-08-15T06:44:44.646Z",
-  "count": 7,
+  "generatedAt": "2026-08-29T10:10:20.504Z",
+  "count": 8,
   "plugins": [
     {
       "id": "deepseek-harness-for-codex",
@@ -120,6 +120,51 @@
       ],
       "repository": "https://github.com/cpj-dev/dsh-plugin-cc",
       "docs": "https://github.com/cpj-dev/dsh-plugin-cc/blob/main/README.md"
+    },
+    {
+      "id": "dsh-product-subagent-console",
+      "name": "Product Subagent Console",
+      "version": "0.9.0",
+      "description": "A DSH conversation workbench for designing multi-Agent plans, observing real child-session trees, comparing approved tasks with runtime attempts, and preparing evidence-backed recovery.",
+      "descriptionZh": "一个 DSH 对话工作台，用于设计多 Agent 方案、观察真实子会话树、对照已批准任务与实际运行，并准备基于证据的恢复操作。",
+      "author": {
+        "name": "Jokasa7",
+        "url": "https://github.com/Jokasa7"
+      },
+      "license": "MIT",
+      "category": "workflow",
+      "tags": [
+        "multi-agent",
+        "subagent",
+        "observability",
+        "planner",
+        "workflow",
+        "web"
+      ],
+      "compatibility": {
+        "dsh": ">=0.1.1-rc.2 <0.2.0-0",
+        "platforms": [
+          "linux",
+          "windows"
+        ]
+      },
+      "install": {
+        "target": "git",
+        "spec": "github:Jokasa7/dsh-product-subagent-console",
+        "command": "dsh plugin --profile {profile} add github:Jokasa7/dsh-product-subagent-console"
+      },
+      "verified": false,
+      "maintainers": [
+        "Jokasa7"
+      ],
+      "repository": "https://github.com/Jokasa7/dsh-product-subagent-console",
+      "screenshots": [
+        "https://raw.githubusercontent.com/Jokasa7/dsh-product-subagent-console/main/docs/assets/agent-plan-zh.jpg",
+        "https://raw.githubusercontent.com/Jokasa7/dsh-product-subagent-console/main/docs/assets/agent-runtime-zh.jpg",
+        "https://raw.githubusercontent.com/Jokasa7/dsh-product-subagent-console/main/docs/assets/agent-compare-zh.jpg",
+        "https://raw.githubusercontent.com/Jokasa7/dsh-product-subagent-console/main/docs/assets/agent-recovery-zh.jpg"
+      ],
+      "docs": "https://github.com/Jokasa7/dsh-product-subagent-console/blob/main/docs/product-tour.md"
     },
     {
       "id": "dsh-web-ui",
